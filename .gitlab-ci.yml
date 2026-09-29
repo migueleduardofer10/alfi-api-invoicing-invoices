@@ -1,0 +1,96 @@
+include:
+  - project: "delosi/devops/templates"
+    ref: "feature/net8-apidelosi"
+    file: ".net8core-aws-serverless.yml"
+
+variables:
+  APP_VERSION: "1.0.0"
+  RELEASE_NOTES: ""
+
+  BASE_DIR: "."
+  # CAMBIAR POR LAMBDA: ruta al .csproj del proyecto que se despliega (el que tiene el handler)
+  SLN_PATH: "src/Delosi.InvoicingInvoices.Api/Delosi.InvoicingInvoices.Api.csproj"
+  # CAMBIAR POR LAMBDA: carpeta bin/Release/net8.0/ de ese mismo proyecto
+  OUTPUT_DIR: "src/Delosi.InvoicingInvoices.Api/bin/Release/net8.0/"
+
+  # CAMBIAR POR LAMBDA: nombre de la función en AWS. Debe ser idéntico al que crea
+  # Terraform en alfie-infrastructure (lambdas.tf), con esta estructura:
+  #
+  #   Delosi-Alfie-{Function-Name}-Lambda-{Env}
+  #
+  #   {Function-Name} = el function_name del bloque module en lambdas.tf, con la
+  #                     primera letra de cada palabra en mayúscula.
+  #                     Regla: nombre del repo sin el prefijo "api-", máximo 40 caracteres.
+  #                     Ej: repo api-invoicing-invoices → function_name = "invoicing-invoices"
+  #                         → Invoicing-Invoices
+  #   {Env}           = Dev, Stg o Prd
+  #
+  # Si no coincide, el pipeline compila pero falla al desplegar: no encuentra la función.
+  DEV_AWS_FUNCTION_NAME: "Delosi-Alfie-Invoicing-Invoices-Lambda-Dev"
+  DEV_AWS_ACCESS_KEY_ID: $DEV_AWS_ACCESS_KEY_ID
+  DEV_AWS_SECRET_ACCESS_KEY: $DEV_AWS_SECRET_ACCESS_KEY
+  DEV_AWS_REGION: $AWS_REGION
+
+  # CAMBIAR POR LAMBDA: misma estructura, terminado en -Stg
+  STG_AWS_FUNCTION_NAME: "Delosi-Alfie-Invoicing-Invoices-Lambda-Stg"
+  STG_AWS_ACCESS_KEY_ID: $STG_AWS_ACCESS_KEY_ID
+  STG_AWS_SECRET_ACCESS_KEY: $STG_AWS_SECRET_ACCESS_KEY
+  STG_AWS_REGION: $AWS_REGION
+
+  # CAMBIAR POR LAMBDA: misma estructura, terminado en -Prd
+  PRD_FUNCTION_NAME: "Delosi-Alfie-Invoicing-Invoices-Lambda-Prd"
+  PRD_AWS_ACCESS_KEY_ID: $PRD_AWS_ACCESS_KEY_ID
+  PRD_AWS_SECRET_ACCESS_KEY: $PRD_AWS_SECRET_ACCESS_KEY
+  PRD_AWS_REGION: $AWS_REGION
+
+  GLOBAL_NUGET_CONFIG: $NUGET_CONFIG
+
+  MULTILAMBDA_ENABLED: "false"
+  ENABLE_AOT: "false"
+  USE_LAMBDA_PACKAGE: "true"
+
+stages:
+  - build
+  - test
+  - develop
+  - staging
+  - production
+  - revert
+
+sast:
+  extends: .sast-analysis
+
+build:
+  extends: .build
+
+publish:
+  extends: .publish
+  needs: [build]
+
+download:
+  extends: .download-artifact
+
+deploy-develop:
+  extends: .dev-deploy
+  needs: [publish]
+
+deploy-staging:
+  extends: .stg-deploy
+  needs: [publish]
+
+create-tag-staging:
+  extends: .stg-create-tag
+
+merge-tag-production:
+  extends: .prd-merge-tag
+
+deploy-production:
+  extends: .prd-deploy
+
+promote-artifact-production:
+  extends: .prd-promote-artifact
+  needs: [download]
+
+create-release-production:
+  extends: .prd-create-release
+  needs: [merge-tag-production]
