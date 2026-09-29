@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Capa de dominio — entidades, constantes y excepciones de negocio</Description>
+    <RootNamespace>Delosi.InvoicingInvoices.Domain</RootNamespace>
+  </PropertyGroup>
+
+</Project>

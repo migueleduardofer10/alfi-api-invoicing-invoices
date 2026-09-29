@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Capa de aplicación — DTOs, contratos, servicios de negocio y validaciones</Description>
+    <RootNamespace>Delosi.InvoicingInvoices.Application</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Delosi.InvoicingInvoices.Domain\Delosi.InvoicingInvoices.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.*" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.*" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.*" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Catálogo de errores incrustado en el ensamblado (lo lee AppError) -->
+    <EmbeddedResource Include="Errors\errors.json" />
+  </ItemGroup>
+
+</Project>

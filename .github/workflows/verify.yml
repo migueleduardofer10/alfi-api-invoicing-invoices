@@ -1,0 +1,31 @@
+name: verify
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: invoicing_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres -d invoicing_test"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Preparar exclusivamente el PostgreSQL desechable del job
+        env:
+          PGPASSWORD: postgres
+        run: psql -v ON_ERROR_STOP=1 -h localhost -U postgres -d invoicing_test -f docs/invoicing_db.sql
+      - run: dotnet restore --locked-mode
+      - run: dotnet build --no-restore --configuration Release
+      - name: Tests
+        env:
+          INVOICING_TEST_POSTGRES: Host=localhost;Port=5432;Database=invoicing_test;Username=postgres;Password=postgres
+        run: dotnet test --no-build --configuration Release --logger trx

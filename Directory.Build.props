@@ -1,0 +1,46 @@
+<Project>
+  <!--
+    Directory.Build.props — Estándar global DELOSI API (.NET 8 + AWS Lambda)
+    Ubicado en la raíz de la solución (.sln).
+    Aplica automáticamente a TODOS los proyectos de la solución.
+  -->
+
+  <PropertyGroup Label="Versión y lenguaje">
+    <LangVersion>12.0</LangVersion>
+    <TargetFramework>net8.0</TargetFramework>
+    <RuntimeIdentifiers>linux-x64</RuntimeIdentifiers>
+    <Nullable>enable</Nullable>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Warnings y errores">
+    <!-- Nullable warnings se tratan como errores: previene NullReferenceException en Lambda -->
+    <WarningsAsErrors>CS8600;CS8601;CS8602;CS8603;CS8604;CS8625</WarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <!-- El SDK instalado puede ser más nuevo que los analyzers fijados para net8.0 -->
+    <_SkipUpgradeNetAnalyzersNuGetWarning>true</_SkipUpgradeNetAnalyzersNuGetWarning>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Información del ensamblado">
+    <Company>DELOSI S.A.</Company>
+    <Product>Facturación — Facturas</Product>
+    <Copyright>Copyright © DELOSI S.A. $([System.DateTime]::Now.Year)</Copyright>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Optimizaciones Lambda">
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <TieredCompilation>true</TieredCompilation>
+  </PropertyGroup>
+
+  <ItemGroup Label="Roslyn Analyzers">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

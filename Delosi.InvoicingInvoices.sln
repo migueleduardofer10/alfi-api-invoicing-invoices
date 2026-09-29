@@ -1,0 +1,42 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delosi.InvoicingInvoices.Api", "src\Delosi.InvoicingInvoices.Api\Delosi.InvoicingInvoices.Api.csproj", "{BE4B3868-E4E6-5A3D-8439-F20C850B11E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delosi.InvoicingInvoices.Application", "src\Delosi.InvoicingInvoices.Application\Delosi.InvoicingInvoices.Application.csproj", "{0E138F28-DB3E-5ED8-ACEF-C1FA05FD7004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delosi.InvoicingInvoices.Domain", "src\Delosi.InvoicingInvoices.Domain\Delosi.InvoicingInvoices.Domain.csproj", "{F4B552B4-B401-56E1-BD47-C7BAE96D90AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delosi.InvoicingInvoices.Infrastructure", "src\Delosi.InvoicingInvoices.Infrastructure\Delosi.InvoicingInvoices.Infrastructure.csproj", "{B6B7D11C-01B5-5B6C-8C25-64CEE521C085}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delosi.InvoicingInvoices.Tests", "test\Delosi.InvoicingInvoices.Tests\Delosi.InvoicingInvoices.Tests.csproj", "{C46DEB03-0039-5BA4-B4C5-657867746AC9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE4B3868-E4E6-5A3D-8439-F20C850B11E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE4B3868-E4E6-5A3D-8439-F20C850B11E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE4B3868-E4E6-5A3D-8439-F20C850B11E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE4B3868-E4E6-5A3D-8439-F20C850B11E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E138F28-DB3E-5ED8-ACEF-C1FA05FD7004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E138F28-DB3E-5ED8-ACEF-C1FA05FD7004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E138F28-DB3E-5ED8-ACEF-C1FA05FD7004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E138F28-DB3E-5ED8-ACEF-C1FA05FD7004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4B552B4-B401-56E1-BD47-C7BAE96D90AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4B552B4-B401-56E1-BD47-C7BAE96D90AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4B552B4-B401-56E1-BD47-C7BAE96D90AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4B552B4-B401-56E1-BD47-C7BAE96D90AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6B7D11C-01B5-5B6C-8C25-64CEE521C085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6B7D11C-01B5-5B6C-8C25-64CEE521C085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6B7D11C-01B5-5B6C-8C25-64CEE521C085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6B7D11C-01B5-5B6C-8C25-64CEE521C085}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C46DEB03-0039-5BA4-B4C5-657867746AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C46DEB03-0039-5BA4-B4C5-657867746AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C46DEB03-0039-5BA4-B4C5-657867746AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C46DEB03-0039-5BA4-B4C5-657867746AC9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

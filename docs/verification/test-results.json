@@ -1,0 +1,127 @@
+{
+  "passed": 30,
+  "failed": 0,
+  "skipped": 0,
+  "results": [
+    {
+      "name": "InvoiceEndpointsTests.Crear_devuelve_201_y_envoltura_del_repositorio",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceEndpointsTests.JSON_invalido_usa_error_estandar({)",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceEndpointsTests.JSON_invalido_usa_error_estandar(null)",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceEndpointsTests.JSON_invalido_usa_error_estandar({})",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceEndpointsTests.JSON_invalido_usa_error_estandar({\u0022taxes\u0022:[]})",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceEndpointsTests.Parametros_invalidos_devuelven_400(/facturas/consultar/abc)",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceEndpointsTests.Parametros_invalidos_devuelven_400(/facturas/consultar/0)",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceEndpointsTests.Parametros_invalidos_devuelven_400(/facturas/listar?pageSize=101)",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceEndpointsTests.Parametros_invalidos_devuelven_400(/facturas/listar?pageSize=abc)",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceEndpointsTests.Parametros_invalidos_devuelven_400(/facturas/listar?issueDateFrom=invalid)",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceEndpointsTests.Lambda_de_crear_no_expone_consultar",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceEndpointsTests.Autenticacion_exigida_devuelve_401_estandar",
+      "status": "passed"
+    },
+    {
+      "name": "DatabaseErrorTests.Fallo_de_conexion_se_traduce_a_DataAccess_y_no_error_500",
+      "status": "passed"
+    },
+    {
+      "name": "InvoicePostgresTests.Ciclo_create_update_get_list_y_consultas_acotadas",
+      "status": "passed"
+    },
+    {
+      "name": "InvoicePostgresTests.Error_de_unicidad_revierte_incluso_la_renumeracion_previa",
+      "status": "passed"
+    },
+    {
+      "name": "InvoicePostgresTests.Intercambia_numeros_sin_cambiar_ids_y_actualiza_trigger_con_cambio_solo_en_detalle",
+      "status": "passed"
+    },
+    {
+      "name": "InvoicePostgresTests.No_acepta_detalles_ajenos_ni_elimina_lineas",
+      "status": "passed"
+    },
+    {
+      "name": "ModelTests.No_mapea_integracion_ni_columnas_sombra",
+      "status": "passed"
+    },
+    {
+      "name": "ModelTests.Conserva_indices_y_checks_sin_indices_implicitos_adicionales",
+      "status": "passed"
+    },
+    {
+      "name": "ModelTests.Proyecciones_se_traducen_a_SQL_sin_cargar_impuestos_o_integracion",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceRequestValidatorTests.Acepta_factura_valida",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceRequestValidatorTests.Respeta_tolerancia_exacta_del_sql(118.01,True)",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceRequestValidatorTests.Respeta_tolerancia_exacta_del_sql(118.02,False)",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceRequestValidatorTests.No_redondea_silenciosamente_precisiones_excesivas",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceRequestValidatorTests.Null_en_coleccion_produce_validacion_sin_excepcion",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceRequestValidatorTests.Rechaza_numeros_de_linea_duplicados",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceRequestValidatorTests.Rechaza_ids_inyectados_en_crear",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceRequestValidatorTests.Rechaza_fechas_invertidas",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceRequestValidatorTests.Overflow_en_importes_es_validacion_y_no_500",
+      "status": "passed"
+    },
+    {
+      "name": "InvoiceRequestValidatorTests.Limita_paginacion_y_ordenamiento",
+      "status": "passed"
+    }
+  ]
+}

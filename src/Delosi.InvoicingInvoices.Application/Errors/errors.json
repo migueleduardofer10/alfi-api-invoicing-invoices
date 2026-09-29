@@ -1,0 +1,30 @@
+{
+  "VALIDATION_ERROR": {
+    "message": "Los datos enviados no son válidos.",
+    "httpStatus": 400
+  },
+  "RESOURCE_NOT_FOUND": {
+    "message": "El recurso solicitado no existe.",
+    "httpStatus": 404
+  },
+  "BUSINESS_RULE_VIOLATION": {
+    "message": "La operación no cumple una regla de negocio.",
+    "httpStatus": 409
+  },
+  "DATABASE_ERROR": {
+    "message": "No fue posible completar la operación en la base de datos.",
+    "httpStatus": 503
+  },
+  "UNAUTHORIZED": {
+    "message": "Credenciales ausentes o inválidas.",
+    "httpStatus": 401
+  },
+  "FORBIDDEN": {
+    "message": "No cuenta con permisos para ejecutar esta operación.",
+    "httpStatus": 403
+  },
+  "INTERNAL_ERROR": {
+    "message": "Ocurrió un error inesperado. Contacte al área de soporte.",
+    "httpStatus": 500
+  }
+}

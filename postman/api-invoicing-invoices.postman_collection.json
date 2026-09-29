@@ -1,0 +1,261 @@
+{
+  "info": {
+    "name": "api-invoicing-invoices — Ciclo de facturas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Ejecute las 4 solicitudes en orden. Configure baseUrl y token. Crear genera un correlativo de prueba y guarda IDs. Actualizar conserva IDs; no elimina líneas. Los GET no envían body. Los importes se validan, no se recalculan. Use una base de pruebas."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5080"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "invoiceId",
+      "value": ""
+    },
+    {
+      "key": "invoiceDetailId",
+      "value": ""
+    },
+    {
+      "key": "invoiceNumber",
+      "value": ""
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "const token = pm.variables.get('token');",
+          "if (token) pm.request.headers.upsert({ key: 'Authorization', value: 'Bearer ' + token });",
+          "pm.request.headers.upsert({ key: 'X-Correlation-Id', value: pm.variables.replaceIn('{{$guid}}') });"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "01 Crear factura",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/facturas/crear",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "facturas",
+            "crear"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"companyId\": 1,\n  \"customerId\": 1001,\n  \"documentTypeId\": 1,\n  \"salesOrganizationId\": 1,\n  \"distributionChannelId\": 1,\n  \"paymentTermId\": 1,\n  \"paymentTypeId\": 1,\n  \"brandId\": 1,\n  \"brandCode\": \"KFC\",\n  \"storeId\": 10,\n  \"storeCode\": \"T001\",\n  \"customerDocumentNumber\": \"20123456789\",\n  \"customerLegalName\": \"CLIENTE DEMO SAC\",\n  \"series\": \"F001\",\n  \"invoiceNumber\": \"{{invoiceNumber}}\",\n  \"issueDate\": \"2026-09-15\",\n  \"dueDate\": \"2026-10-15\",\n  \"currency\": \"PEN\",\n  \"exchangeRate\": 1,\n  \"subtotal\": 200,\n  \"discount\": 0,\n  \"serviceChargeTotal\": 0,\n  \"taxTotal\": 36,\n  \"total\": 236,\n  \"status\": \"REGISTERED\",\n  \"createdBy\": \"postman\",\n  \"details\": [\n    {\n      \"lineNumber\": 1,\n      \"conceptId\": 1,\n      \"conceptCode\": \"CON001\",\n      \"materialId\": 101,\n      \"materialCode\": \"MAT001\",\n      \"accountingAccountId\": null,\n      \"description\": \"Servicio de alimentación corporativa\",\n      \"quantity\": 2,\n      \"unitPrice\": 100,\n      \"discount\": 0,\n      \"subtotal\": 200,\n      \"serviceCharge\": 0,\n      \"taxAmount\": 36,\n      \"total\": 236\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.collectionVariables.set('invoiceNumber', String(Date.now()).slice(-8).padStart(8, '0'));",
+              "pm.collectionVariables.unset('invoiceId');",
+              "pm.collectionVariables.unset('invoiceDetailId');"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Creada: 201', () => pm.response.to.have.status(201));",
+              "if (pm.response.code === 201) { const data = pm.response.json().data;",
+              "  pm.collectionVariables.set('invoiceId', String(data.invoiceId));",
+              "  pm.collectionVariables.set('invoiceDetailId', String(data.details[0].invoiceDetailId));",
+              "  pm.test('IDs generados', () => { pm.expect(data.invoiceId).to.be.above(0); pm.expect(data.details[0].invoiceDetailId).to.be.above(0); }); }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 Actualizar factura",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/facturas/actualizar/{{invoiceId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "facturas",
+            "actualizar",
+            "{{invoiceId}}"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"companyId\": 1,\n  \"customerId\": 1001,\n  \"documentTypeId\": 1,\n  \"salesOrganizationId\": 1,\n  \"distributionChannelId\": 1,\n  \"paymentTermId\": 1,\n  \"paymentTypeId\": 1,\n  \"brandId\": 1,\n  \"brandCode\": \"KFC\",\n  \"storeId\": 10,\n  \"storeCode\": \"T001\",\n  \"customerDocumentNumber\": \"20123456789\",\n  \"customerLegalName\": \"CLIENTE DEMO SAC\",\n  \"series\": \"F001\",\n  \"invoiceNumber\": \"{{invoiceNumber}}\",\n  \"issueDate\": \"2026-09-15\",\n  \"dueDate\": \"2026-10-15\",\n  \"currency\": \"PEN\",\n  \"exchangeRate\": 1,\n  \"subtotal\": 200,\n  \"discount\": 0,\n  \"serviceChargeTotal\": 0,\n  \"taxTotal\": 36,\n  \"total\": 236,\n  \"status\": \"ISSUED\",\n  \"details\": [\n    {\n      \"lineNumber\": 1,\n      \"conceptId\": 1,\n      \"conceptCode\": \"CON001\",\n      \"materialId\": 101,\n      \"materialCode\": \"MAT001\",\n      \"accountingAccountId\": null,\n      \"description\": \"Servicio de alimentación corporativa actualizado\",\n      \"quantity\": 2,\n      \"unitPrice\": 100,\n      \"discount\": 0,\n      \"subtotal\": 200,\n      \"serviceCharge\": 0,\n      \"taxAmount\": 36,\n      \"total\": 236,\n      \"invoiceDetailId\": {{invoiceDetailId}}\n    }\n  ],\n  \"modifiedBy\": \"postman\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Actualizada: 200', () => pm.response.to.have.status(200));",
+              "if (pm.response.code === 200) pm.test('Trigger modified_at', () => pm.expect(pm.response.json().data.modifiedAt).to.not.equal(null));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 Consultar factura",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/facturas/consultar/{{invoiceId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "facturas",
+            "consultar",
+            "{{invoiceId}}"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Consulta: 200', () => pm.response.to.have.status(200));",
+              "if (pm.response.code === 200) { const data = pm.response.json().data;",
+              "  pm.test('Factura actualizada y detalle conservado', () => { pm.expect(data.status).to.eql('ISSUED'); pm.expect(String(data.details[0].invoiceDetailId)).to.eql(pm.collectionVariables.get('invoiceDetailId')); }); }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 Listar facturas",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/facturas/listar?page=1&pageSize=20&companyId=1&status=ISSUED&issueDateFrom=2026-09-01&issueDateTo=2026-10-31&sortBy=issueDate&sortDirection=desc&invoiceNumber={{invoiceNumber}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "facturas",
+            "listar"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "pageSize",
+              "value": "20"
+            },
+            {
+              "key": "companyId",
+              "value": "1"
+            },
+            {
+              "key": "status",
+              "value": "ISSUED"
+            },
+            {
+              "key": "issueDateFrom",
+              "value": "2026-09-01"
+            },
+            {
+              "key": "issueDateTo",
+              "value": "2026-10-31"
+            },
+            {
+              "key": "sortBy",
+              "value": "issueDate"
+            },
+            {
+              "key": "sortDirection",
+              "value": "desc"
+            },
+            {
+              "key": "invoiceNumber",
+              "value": "{{invoiceNumber}}"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Listado: 200', () => pm.response.to.have.status(200));",
+              "if (pm.response.code === 200) { const page = pm.response.json().data; pm.test('Factura incluida y paginación', () => { pm.expect(page.items.some(x => String(x.invoiceId) === pm.collectionVariables.get('invoiceId'))).to.eql(true); pm.expect(page.items.length).to.be.at.most(page.pageSize); }); }"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

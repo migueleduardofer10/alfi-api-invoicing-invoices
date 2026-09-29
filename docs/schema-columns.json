@@ -1,0 +1,494 @@
+{
+  "invoice": [
+    {
+      "column": "invoice_id",
+      "name": "InvoiceId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": true
+    },
+    {
+      "column": "company_id",
+      "name": "CompanyId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "customer_id",
+      "name": "CustomerId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "document_type_id",
+      "name": "DocumentTypeId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "sales_organization_id",
+      "name": "SalesOrganizationId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "distribution_channel_id",
+      "name": "DistributionChannelId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "payment_term_id",
+      "name": "PaymentTermId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "payment_type_id",
+      "name": "PaymentTypeId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "brand_id",
+      "name": "BrandId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "brand_code",
+      "name": "BrandCode",
+      "dbtype": "varchar(6)",
+      "type": "string",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "store_id",
+      "name": "StoreId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": true,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "store_code",
+      "name": "StoreCode",
+      "dbtype": "varchar(6)",
+      "type": "string",
+      "nullable": true,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "customer_document_number",
+      "name": "CustomerDocumentNumber",
+      "dbtype": "varchar(15)",
+      "type": "string",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "customer_legal_name",
+      "name": "CustomerLegalName",
+      "dbtype": "varchar(200)",
+      "type": "string",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "series",
+      "name": "Series",
+      "dbtype": "varchar(4)",
+      "type": "string",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "invoice_number",
+      "name": "InvoiceNumber",
+      "dbtype": "varchar(8)",
+      "type": "string",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "issue_date",
+      "name": "IssueDate",
+      "dbtype": "date",
+      "type": "DateOnly",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "due_date",
+      "name": "DueDate",
+      "dbtype": "date",
+      "type": "DateOnly",
+      "nullable": true,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "currency",
+      "name": "Currency",
+      "dbtype": "char(3)",
+      "type": "string",
+      "nullable": false,
+      "default": "'PEN'",
+      "identity": false
+    },
+    {
+      "column": "exchange_rate",
+      "name": "ExchangeRate",
+      "dbtype": "numeric(12,6)",
+      "type": "decimal",
+      "nullable": false,
+      "default": "1",
+      "identity": false
+    },
+    {
+      "column": "subtotal",
+      "name": "Subtotal",
+      "dbtype": "numeric(18,2)",
+      "type": "decimal",
+      "nullable": false,
+      "default": "0",
+      "identity": false
+    },
+    {
+      "column": "discount",
+      "name": "Discount",
+      "dbtype": "numeric(18,2)",
+      "type": "decimal",
+      "nullable": false,
+      "default": "0",
+      "identity": false
+    },
+    {
+      "column": "service_charge_total",
+      "name": "ServiceChargeTotal",
+      "dbtype": "numeric(18,2)",
+      "type": "decimal",
+      "nullable": false,
+      "default": "0",
+      "identity": false
+    },
+    {
+      "column": "tax_total",
+      "name": "TaxTotal",
+      "dbtype": "numeric(18,2)",
+      "type": "decimal",
+      "nullable": false,
+      "default": "0",
+      "identity": false
+    },
+    {
+      "column": "total",
+      "name": "Total",
+      "dbtype": "numeric(18,2)",
+      "type": "decimal",
+      "nullable": false,
+      "default": "0",
+      "identity": false
+    },
+    {
+      "column": "status",
+      "name": "Status",
+      "dbtype": "varchar(20)",
+      "type": "string",
+      "nullable": false,
+      "default": "'REGISTERED'",
+      "identity": false
+    },
+    {
+      "column": "created_by",
+      "name": "CreatedBy",
+      "dbtype": "varchar(50)",
+      "type": "string",
+      "nullable": true,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "created_at",
+      "name": "CreatedAt",
+      "dbtype": "timestamp",
+      "type": "DateTime",
+      "nullable": false,
+      "default": "now()",
+      "identity": false
+    },
+    {
+      "column": "modified_by",
+      "name": "ModifiedBy",
+      "dbtype": "varchar(50)",
+      "type": "string",
+      "nullable": true,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "modified_at",
+      "name": "ModifiedAt",
+      "dbtype": "timestamp",
+      "type": "DateTime",
+      "nullable": true,
+      "default": null,
+      "identity": false
+    }
+  ],
+  "invoice_detail": [
+    {
+      "column": "invoice_detail_id",
+      "name": "InvoiceDetailId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": true
+    },
+    {
+      "column": "invoice_id",
+      "name": "InvoiceId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "line_number",
+      "name": "LineNumber",
+      "dbtype": "integer",
+      "type": "int",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "concept_id",
+      "name": "ConceptId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "concept_code",
+      "name": "ConceptCode",
+      "dbtype": "varchar(20)",
+      "type": "string",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "material_id",
+      "name": "MaterialId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "material_code",
+      "name": "MaterialCode",
+      "dbtype": "varchar(20)",
+      "type": "string",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "accounting_account_id",
+      "name": "AccountingAccountId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": true,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "description",
+      "name": "Description",
+      "dbtype": "varchar(250)",
+      "type": "string",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "quantity",
+      "name": "Quantity",
+      "dbtype": "numeric(14,4)",
+      "type": "decimal",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "unit_price",
+      "name": "UnitPrice",
+      "dbtype": "numeric(18,6)",
+      "type": "decimal",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "discount",
+      "name": "Discount",
+      "dbtype": "numeric(18,2)",
+      "type": "decimal",
+      "nullable": false,
+      "default": "0",
+      "identity": false
+    },
+    {
+      "column": "subtotal",
+      "name": "Subtotal",
+      "dbtype": "numeric(18,2)",
+      "type": "decimal",
+      "nullable": false,
+      "default": "0",
+      "identity": false
+    },
+    {
+      "column": "service_charge",
+      "name": "ServiceCharge",
+      "dbtype": "numeric(18,2)",
+      "type": "decimal",
+      "nullable": false,
+      "default": "0",
+      "identity": false
+    },
+    {
+      "column": "tax_amount",
+      "name": "TaxAmount",
+      "dbtype": "numeric(18,2)",
+      "type": "decimal",
+      "nullable": false,
+      "default": "0",
+      "identity": false
+    },
+    {
+      "column": "total",
+      "name": "Total",
+      "dbtype": "numeric(18,2)",
+      "type": "decimal",
+      "nullable": false,
+      "default": "0",
+      "identity": false
+    }
+  ],
+  "invoice_tax": [
+    {
+      "column": "invoice_tax_id",
+      "name": "InvoiceTaxId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": true
+    },
+    {
+      "column": "invoice_id",
+      "name": "InvoiceId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "invoice_detail_id",
+      "name": "InvoiceDetailId",
+      "dbtype": "bigint",
+      "type": "long",
+      "nullable": true,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "tax_type",
+      "name": "TaxType",
+      "dbtype": "varchar(20)",
+      "type": "string",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "tax_code",
+      "name": "TaxCode",
+      "dbtype": "varchar(10)",
+      "type": "string",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "rate",
+      "name": "Rate",
+      "dbtype": "numeric(7,4)",
+      "type": "decimal",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "taxable_base",
+      "name": "TaxableBase",
+      "dbtype": "numeric(18,2)",
+      "type": "decimal",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    },
+    {
+      "column": "amount",
+      "name": "Amount",
+      "dbtype": "numeric(18,2)",
+      "type": "decimal",
+      "nullable": false,
+      "default": null,
+      "identity": false
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <Description>Minimal API .NET 8 — corre en local y como AWS Lambda con el mismo código</Description>
+    <RootNamespace>Delosi.InvoicingInvoices.Api</RootNamespace>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Delosi.InvoicingInvoices.Domain\Delosi.InvoicingInvoices.Domain.csproj" />
+    <ProjectReference Include="..\Delosi.InvoicingInvoices.Application\Delosi.InvoicingInvoices.Application.csproj" />
+    <ProjectReference Include="..\Delosi.InvoicingInvoices.Infrastructure\Delosi.InvoicingInvoices.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Label="AWS Lambda">
+    <!-- Convierte la app en Lambda sin tocar el código de negocio -->
+    <PackageReference Include="Amazon.Lambda.AspNetCoreServer.Hosting" Version="1.*" />
+    <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.*" />
+  </ItemGroup>
+
+  <ItemGroup Label="API">
+    <PackageReference Include="Asp.Versioning.Http" Version="8.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.*" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.*" />
+  </ItemGroup>
+
+  <ItemGroup Label="Logging">
+    <PackageReference Include="Serilog.AspNetCore" Version="8.*" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="certificates\*.pem" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

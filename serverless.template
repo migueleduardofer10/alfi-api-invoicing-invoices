@@ -1,0 +1,353 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Transform": "AWS::Serverless-2016-10-31",
+  "Description": "api-invoicing-invoices: cuatro Lambdas .NET 8 sobre PostgreSQL existente; sin recursos de base de datos.",
+  "Parameters": {
+    "StageName": {
+      "Type": "String",
+      "Default": "dev",
+      "AllowedValues": [
+        "dev",
+        "cert",
+        "prod"
+      ]
+    },
+    "DatabaseSecretArn": {
+      "Type": "String",
+      "Description": "ARN del secreto existente con ConnectionStrings__Postgres."
+    },
+    "ApplicationSecretArn": {
+      "Type": "String",
+      "Description": "ARN del secreto existente con la configuración JwtAuth."
+    },
+    "SubnetIds": {
+      "Type": "List<AWS::EC2::Subnet::Id>",
+      "Description": "Subredes existentes con conectividad a PostgreSQL y Secrets Manager."
+    },
+    "SecurityGroupIds": {
+      "Type": "List<AWS::EC2::SecurityGroup::Id>",
+      "Description": "Security groups existentes de las Lambdas."
+    }
+  },
+  "Globals": {
+    "Function": {
+      "Runtime": "dotnet8",
+      "Handler": "Delosi.InvoicingInvoices.Api",
+      "MemorySize": 512,
+      "Timeout": 28,
+      "Architectures": [
+        "x86_64"
+      ],
+      "VpcConfig": {
+        "SubnetIds": {
+          "Ref": "SubnetIds"
+        },
+        "SecurityGroupIds": {
+          "Ref": "SecurityGroupIds"
+        }
+      },
+      "Environment": {
+        "Variables": {
+          "ASPNETCORE_ENVIRONMENT": "Production",
+          "DB_SECRET_NAME": {
+            "Ref": "DatabaseSecretArn"
+          },
+          "APP_SECRET_NAME": {
+            "Ref": "ApplicationSecretArn"
+          },
+          "Swagger__Enabled": "false",
+          "Database__CommandTimeoutSeconds": "20"
+        }
+      }
+    }
+  },
+  "Resources": {
+    "InvoicesApi": {
+      "Type": "AWS::Serverless::Api",
+      "Properties": {
+        "StageName": {
+          "Ref": "StageName"
+        },
+        "EndpointConfiguration": {
+          "Type": "REGIONAL"
+        }
+      }
+    },
+    "CreateInvoiceFunction": {
+      "Type": "AWS::Serverless::Function",
+      "Metadata": {
+        "BuildMethod": "makefile"
+      },
+      "Properties": {
+        "FunctionName": {
+          "Fn::Sub": "${AWS::StackName}-crear"
+        },
+        "CodeUri": ".",
+        "Environment": {
+          "Variables": {
+            "INVOICE_OPERATION": "Create"
+          }
+        },
+        "Policies": [
+          "AWSLambdaVPCAccessExecutionRole",
+          {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "secretsmanager:GetSecretValue"
+                ],
+                "Resource": [
+                  {
+                    "Ref": "DatabaseSecretArn"
+                  },
+                  {
+                    "Ref": "ApplicationSecretArn"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Events": {
+          "Request": {
+            "Type": "Api",
+            "Properties": {
+              "RestApiId": {
+                "Ref": "InvoicesApi"
+              },
+              "Path": "/facturas/crear",
+              "Method": "POST"
+            }
+          }
+        }
+      }
+    },
+    "CreateInvoiceFunctionLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Sub": [
+            "/aws/lambda/${FunctionName}",
+            {
+              "FunctionName": {
+                "Ref": "CreateInvoiceFunction"
+              }
+            }
+          ]
+        },
+        "RetentionInDays": 30
+      }
+    },
+    "UpdateInvoiceFunction": {
+      "Type": "AWS::Serverless::Function",
+      "Metadata": {
+        "BuildMethod": "makefile"
+      },
+      "Properties": {
+        "FunctionName": {
+          "Fn::Sub": "${AWS::StackName}-actualizar"
+        },
+        "CodeUri": ".",
+        "Environment": {
+          "Variables": {
+            "INVOICE_OPERATION": "Update"
+          }
+        },
+        "Policies": [
+          "AWSLambdaVPCAccessExecutionRole",
+          {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "secretsmanager:GetSecretValue"
+                ],
+                "Resource": [
+                  {
+                    "Ref": "DatabaseSecretArn"
+                  },
+                  {
+                    "Ref": "ApplicationSecretArn"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Events": {
+          "Request": {
+            "Type": "Api",
+            "Properties": {
+              "RestApiId": {
+                "Ref": "InvoicesApi"
+              },
+              "Path": "/facturas/actualizar/{id}",
+              "Method": "PUT"
+            }
+          }
+        }
+      }
+    },
+    "UpdateInvoiceFunctionLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Sub": [
+            "/aws/lambda/${FunctionName}",
+            {
+              "FunctionName": {
+                "Ref": "UpdateInvoiceFunction"
+              }
+            }
+          ]
+        },
+        "RetentionInDays": 30
+      }
+    },
+    "GetInvoiceFunction": {
+      "Type": "AWS::Serverless::Function",
+      "Metadata": {
+        "BuildMethod": "makefile"
+      },
+      "Properties": {
+        "FunctionName": {
+          "Fn::Sub": "${AWS::StackName}-consultar"
+        },
+        "CodeUri": ".",
+        "Environment": {
+          "Variables": {
+            "INVOICE_OPERATION": "Get"
+          }
+        },
+        "Policies": [
+          "AWSLambdaVPCAccessExecutionRole",
+          {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "secretsmanager:GetSecretValue"
+                ],
+                "Resource": [
+                  {
+                    "Ref": "DatabaseSecretArn"
+                  },
+                  {
+                    "Ref": "ApplicationSecretArn"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Events": {
+          "Request": {
+            "Type": "Api",
+            "Properties": {
+              "RestApiId": {
+                "Ref": "InvoicesApi"
+              },
+              "Path": "/facturas/consultar/{id}",
+              "Method": "GET"
+            }
+          }
+        }
+      }
+    },
+    "GetInvoiceFunctionLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Sub": [
+            "/aws/lambda/${FunctionName}",
+            {
+              "FunctionName": {
+                "Ref": "GetInvoiceFunction"
+              }
+            }
+          ]
+        },
+        "RetentionInDays": 30
+      }
+    },
+    "ListInvoicesFunction": {
+      "Type": "AWS::Serverless::Function",
+      "Metadata": {
+        "BuildMethod": "makefile"
+      },
+      "Properties": {
+        "FunctionName": {
+          "Fn::Sub": "${AWS::StackName}-listar"
+        },
+        "CodeUri": ".",
+        "Environment": {
+          "Variables": {
+            "INVOICE_OPERATION": "List"
+          }
+        },
+        "Policies": [
+          "AWSLambdaVPCAccessExecutionRole",
+          {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "secretsmanager:GetSecretValue"
+                ],
+                "Resource": [
+                  {
+                    "Ref": "DatabaseSecretArn"
+                  },
+                  {
+                    "Ref": "ApplicationSecretArn"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Events": {
+          "Request": {
+            "Type": "Api",
+            "Properties": {
+              "RestApiId": {
+                "Ref": "InvoicesApi"
+              },
+              "Path": "/facturas/listar",
+              "Method": "GET"
+            }
+          }
+        }
+      }
+    },
+    "ListInvoicesFunctionLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Sub": [
+            "/aws/lambda/${FunctionName}",
+            {
+              "FunctionName": {
+                "Ref": "ListInvoicesFunction"
+              }
+            }
+          ]
+        },
+        "RetentionInDays": 30
+      }
+    }
+  },
+  "Outputs": {
+    "BaseUrl": {
+      "Description": "Usar como baseUrl en Postman.",
+      "Value": {
+        "Fn::Sub": "https://${InvoicesApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/${StageName}"
+      }
+    }
+  }
+}

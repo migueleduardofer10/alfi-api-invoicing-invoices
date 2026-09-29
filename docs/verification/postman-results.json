@@ -1,0 +1,72 @@
+{
+  "stats": {
+    "iterations": {
+      "total": 1,
+      "pending": 0,
+      "failed": 0
+    },
+    "items": {
+      "total": 4,
+      "pending": 0,
+      "failed": 0
+    },
+    "scripts": {
+      "total": 9,
+      "pending": 0,
+      "failed": 0
+    },
+    "prerequests": {
+      "total": 4,
+      "pending": 0,
+      "failed": 0
+    },
+    "requests": {
+      "total": 4,
+      "pending": 0,
+      "failed": 0
+    },
+    "tests": {
+      "total": 4,
+      "pending": 0,
+      "failed": 0
+    },
+    "assertions": {
+      "total": 8,
+      "pending": 0,
+      "failed": 0
+    },
+    "testScripts": {
+      "total": 4,
+      "pending": 0,
+      "failed": 0
+    },
+    "prerequestScripts": {
+      "total": 5,
+      "pending": 0,
+      "failed": 0
+    }
+  },
+  "requests": [
+    {
+      "name": "01 Crear factura",
+      "status": 201
+    },
+    {
+      "name": "02 Actualizar factura",
+      "status": 200
+    },
+    {
+      "name": "03 Consultar factura",
+      "status": 200
+    },
+    {
+      "name": "04 Listar facturas",
+      "status": 200
+    }
+  ],
+  "failures": [],
+  "unusedTables": {
+    "tax_rows": 0,
+    "integration_rows": 0
+  }
+}

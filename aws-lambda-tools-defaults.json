@@ -1,0 +1,11 @@
+{
+  "Information": [
+    "El template SAM despliega cuatro funciones que comparten este ensamblado."
+  ],
+  "region": "us-east-1",
+  "configuration": "Release",
+  "framework": "net8.0",
+  "function-runtime": "dotnet8",
+  "function-handler": "Delosi.InvoicingInvoices.Api",
+  "template": "serverless.template"
+}

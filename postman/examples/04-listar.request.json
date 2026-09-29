@@ -1,0 +1,14 @@
+{
+  "method": "GET",
+  "url": "{{baseUrl}}/facturas/listar",
+  "query": {
+    "page": "1",
+    "pageSize": "20",
+    "companyId": "1",
+    "status": "ISSUED",
+    "issueDateFrom": "2026-09-01",
+    "issueDateTo": "2026-10-31",
+    "sortBy": "issueDate",
+    "sortDirection": "desc"
+  }
+}

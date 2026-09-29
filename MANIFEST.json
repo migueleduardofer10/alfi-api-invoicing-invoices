@@ -1,0 +1,502 @@
+{
+  "project": "api-invoicing-invoices",
+  "referenceCommit": "a083400addb95eed8d5d919ccb82df7af0512323",
+  "originalSqlSha256": "63cd5a758bc602270f715cbd74cea4157e12c5225c02f9fc41096f902e781a3e",
+  "files": [
+    {
+      "path": ".github/workflows/verify.yml",
+      "bytes": 1127,
+      "sha256": "23386d0fecfae03e3c6a671aef300d827508eb70bbf087ba251a93296227cee3"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 101,
+      "sha256": "57089245e9ad86e4f24f089b4d9dc9d2d836c3c495a3ade010e1986d8a96204c"
+    },
+    {
+      "path": "Delosi.InvoicingInvoices.sln",
+      "bytes": 3161,
+      "sha256": "d53544d325b74a04026c04c648f02df9728dfdf39b4ed66d3267eb8695b50854"
+    },
+    {
+      "path": "Directory.Build.props",
+      "bytes": 1872,
+      "sha256": "0f1bff6061c8b1ad29c74df95bfd465b87b47d8eee88784ee9977941c7b4e74d"
+    },
+    {
+      "path": "Makefile",
+      "bytes": 517,
+      "sha256": "652d9d9578e568462fe7cadfcdacdc6dd743f85cb8133c8e295945326e6fa94f"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7452,
+      "sha256": "7f9710c24002a3ed7d8e0ea925edb15b861c2be62eef28f209ab9d09ba5d769c"
+    },
+    {
+      "path": "aws-lambda-tools-defaults.json",
+      "bytes": 311,
+      "sha256": "878d54d539f99a89eb766c0eb539a20da711d858d61b9317d33b5dd1bb90f5f2"
+    },
+    {
+      "path": "docker-compose.tests.yml",
+      "bytes": 560,
+      "sha256": "420525a6458e1b415553861c0a7ac08b4419a1326a59f3497e035ca320f93d54"
+    },
+    {
+      "path": "docs/ANALISIS.md",
+      "bytes": 8103,
+      "sha256": "32fc81f480fdcb4c49c89744b1f24521f2b846d470d52adf37a2daa61fe1bd05"
+    },
+    {
+      "path": "docs/DEPLOY.md",
+      "bytes": 3980,
+      "sha256": "ea4dcc15820cf7ac14f470f14b4a5649cf653ead5e71baa94af93c5361663fe4"
+    },
+    {
+      "path": "docs/VERIFICACION.md",
+      "bytes": 2833,
+      "sha256": "1ba6582e3f733f6d0b3c4e0dd26fdc445827e5da419b803c77aa3d4afbe173d2"
+    },
+    {
+      "path": "docs/invoicing_db.sql",
+      "bytes": 12846,
+      "sha256": "63cd5a758bc602270f715cbd74cea4157e12c5225c02f9fc41096f902e781a3e"
+    },
+    {
+      "path": "docs/schema-columns.json",
+      "bytes": 10752,
+      "sha256": "7e4d2b0526eb361fc40ef736baa9e8458bed49960afe9e49c2292e0bed2b2b0c"
+    },
+    {
+      "path": "docs/secrets/application.example.json",
+      "bytes": 214,
+      "sha256": "d95ae1dabaed423750fb3af722dce7ebde0a09d2f7349c24624fface8b19f9b8"
+    },
+    {
+      "path": "docs/secrets/database.example.json",
+      "bytes": 310,
+      "sha256": "9e216fabc426bbd4858bcc55940eb65cefd497fa1ecdeabd548ea93d357a3f71"
+    },
+    {
+      "path": "docs/verification/postman-results.json",
+      "bytes": 1147,
+      "sha256": "951e0a19142cf409083e9c4ac28a08504ad30248d513457d45dd2dd929462fc9"
+    },
+    {
+      "path": "docs/verification/test-results.json",
+      "bytes": 3877,
+      "sha256": "687a25a8252da6299915f7672df3dcb3dd496158bd1d8d0c9234fd8420a956da"
+    },
+    {
+      "path": "postman/api-invoicing-invoices.postman_collection.json",
+      "bytes": 9819,
+      "sha256": "ad482f2cccf3bb77d333b64b1b8682dc55d19bfa79c96be19eb210908d288085"
+    },
+    {
+      "path": "postman/examples/01-crear.body.json",
+      "bytes": 1049,
+      "sha256": "92bf21b07297441e3054c235772523fcf2f011feb7b3dcc7953e396d1a0b7b30"
+    },
+    {
+      "path": "postman/examples/02-actualizar.body.json",
+      "bytes": 1086,
+      "sha256": "e581a476e41981699472784a4592471bb11a9c7fc1dc8c4b4e0ba5f137e547cf"
+    },
+    {
+      "path": "postman/examples/03-consultar.request.json",
+      "bytes": 132,
+      "sha256": "3207446279e656a8371de350366dfe97f808b2be454ed008d58aa81c3f1ca4dc"
+    },
+    {
+      "path": "postman/examples/04-listar.request.json",
+      "bytes": 288,
+      "sha256": "c27ee7f747363a4d758037d26a2a07de20e13c060c30f831262f3b8dc8b24a31"
+    },
+    {
+      "path": "serverless.template",
+      "bytes": 8779,
+      "sha256": "c8ca78c1f227dd9d791b5763ae3b9efd0ac7ec30ac8233552f4a5e940b659838"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/Delosi.InvoicingInvoices.Api.csproj",
+      "bytes": 1705,
+      "sha256": "553482ba7aeb5a885ff5fef91cd72ceb748f31417e09a46ffda46f9b0fb0c500"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/Endpoints/HealthEndpoints.cs",
+      "bytes": 1785,
+      "sha256": "1ecabb87adc1250875143979f09191e94bcad81bf5ffe01970e28852c2d06854"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/Endpoints/InvoiceEndpoints.cs",
+      "bytes": 4105,
+      "sha256": "db60ecb430a076ec69a08ac75f77a415015d5567122fd237ad58d5e37b41720f"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/Extensions/AuthenticationExtensions.cs",
+      "bytes": 2439,
+      "sha256": "a48b06498b2ee9e25cfe28c4c2f7167372b273c34be0ad69c8c834e3dd69c987"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/Extensions/SwaggerExtensions.cs",
+      "bytes": 2364,
+      "sha256": "011c14ff9a22323ce6c7f62df3e253b06593fe0ebab37e892aa9b12cb3332347"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/Middleware/CorrelationIdMiddleware.cs",
+      "bytes": 1142,
+      "sha256": "d7d3d3357f7ee358096158bde4d61ad4b77c7299fd79ce5ffd3f8a0d0e8d6f43"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/Middleware/ExceptionMiddleware.cs",
+      "bytes": 4788,
+      "sha256": "37cf72f0195420a16c3cb25d6a51b04b5fbac1b7947b01f65d16a7e39cda4fcc"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/Options/InvoiceLambdaOptions.cs",
+      "bytes": 537,
+      "sha256": "3a543c2424221c1d76de27bb002bbe1f57034ab833dfb14e0e7c40bbcb4be8b1"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/Options/JwtAuthOptions.cs",
+      "bytes": 1240,
+      "sha256": "46b6e692c4c5965f45a0677d9e8a46f98326a3fafd11ee2d92eeec459304a87b"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/Program.cs",
+      "bytes": 3017,
+      "sha256": "b1eabe833c8f22b1d36a11ded64c0764d28bc2778542ff38213105ee6af2f6ed"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/Properties/launchSettings.json",
+      "bytes": 247,
+      "sha256": "5b06d67258df8e01db1c4afc95faba66265862fa3e49a69c01e236e936651ef5"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/appsettings.Development.json",
+      "bytes": 84,
+      "sha256": "e1a494c121442169a7777cc9fd7627d581223907ef8f929a1bbdf32025b16b4e"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/appsettings.json",
+      "bytes": 887,
+      "sha256": "f3e61640545f4a5e301b293a52b5c070954b1c4a0c2118e305145db41b0c9d61"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/certificates/global-bundle.pem",
+      "bytes": 165408,
+      "sha256": "e5bb2084ccf45087bda1c9bffdea0eb15ee67f0b91646106e466714f9de3c7e3"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Api/packages.lock.json",
+      "bytes": 23894,
+      "sha256": "bd62e6f985d5407d767a9a911f6ceaa719edbb579e832c7cba71f1aa0536a819"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Common/ApiResponse.cs",
+      "bytes": 570,
+      "sha256": "8b7780893001b4776053cf51536fd529a3c0bc6520d608389d824fc6adb58609"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Common/ErrorResponse.cs",
+      "bytes": 581,
+      "sha256": "bd8a21a4a03546ec7d05f2e4d0607db87de64d34f6e99ec12d64045e1bffc3ff"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Common/PagedResponse.cs",
+      "bytes": 233,
+      "sha256": "1678b4ecf7835afb3c1e9200eb02fb641a7336ee8c4febcea97816aad70db3de"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/DTOs/Invoice/CreateInvoiceRequest.cs",
+      "bytes": 174,
+      "sha256": "1f34b6fe6f5a09df225bc19d217a6d7026664b9698e1ca378c2f8e09ce626642"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/DTOs/Invoice/InvoiceDetailRequest.cs",
+      "bytes": 949,
+      "sha256": "6b208438fa17a7d30a54e13a531b4fc15d7f1c5057f770e7a709d39b45e0a3b5"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/DTOs/Invoice/InvoiceDetailResponse.cs",
+      "bytes": 851,
+      "sha256": "7686bb9c023a7f412a8eba6af358efc7f5ccd919216c8ff9c5eca0b2a750bce1"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/DTOs/Invoice/InvoiceFilterRequest.cs",
+      "bytes": 483,
+      "sha256": "d408df1730be740e6aa306097413f887914a056e4dc1da7f09b075b84167222f"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/DTOs/Invoice/InvoiceListItemResponse.cs",
+      "bytes": 356,
+      "sha256": "b335d537a528b55680cfb8a0ae165b25a3a07dd3a7f375affc16730ee33e8ff1"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/DTOs/Invoice/InvoiceResponse.cs",
+      "bytes": 1666,
+      "sha256": "5ce0a83c89709d508c43fef0737f9dfac3612997cc420f0e65408348e0333717"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/DTOs/Invoice/InvoiceSavedResponse.cs",
+      "bytes": 312,
+      "sha256": "445ae75fa859c4707de0d0799e47a9f4b4b683d71dde421e4d02e1e9a336bb65"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/DTOs/Invoice/InvoiceWriteRequest.cs",
+      "bytes": 1553,
+      "sha256": "f1ed8eea463beefdd5300fc7ef215abe6f094b4b8d1edf6ce3e052f024e93906"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/DTOs/Invoice/UpdateInvoiceRequest.cs",
+      "bytes": 175,
+      "sha256": "5795a7f40a9213022dda875e1f02762ef0747ab21ea495df0a72be0499df162b"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Delosi.InvoicingInvoices.Application.csproj",
+      "bytes": 955,
+      "sha256": "fff4194bc74af8ee1420871009c8ea54b30e6c195855c80ee2f8e151da4ec64e"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/DependencyInjection.cs",
+      "bytes": 599,
+      "sha256": "087b7b27633a7ac88e056dcd01ec8aacccfe9fa7d7087b549112e532ad6cccf0"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Errors/AppError.cs",
+      "bytes": 1846,
+      "sha256": "0e698232ae30af246774424b2f29e4e1f449a6b5041964d7f3cf9d5bc37ffbd6"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Errors/ErrorCodes.cs",
+      "bytes": 612,
+      "sha256": "1ae1ce0ffb2fa60340b84137e9d7b3085353bb3ea74dcd785039a91396f525e9"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Errors/errors.json",
+      "bytes": 805,
+      "sha256": "242a7e917c850aa486e07a0493303feeb0ac131db2275708e2ac537874b86182"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Interfaces/Repositories/IInvoiceRepository.cs",
+      "bytes": 713,
+      "sha256": "89c1479d4cffab15d60ee6f0bc6bb0ca85c3e79b04cee7af02487fe31f9492a8"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Interfaces/Repositories/IUnitOfWork.cs",
+      "bytes": 298,
+      "sha256": "57bb24bb621838e16c8c318e721177bc2a32c5b8a7b1676a50d9b8f56ae42bb4"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Interfaces/Services/IInvoiceService.cs",
+      "bytes": 658,
+      "sha256": "af8d9d38d294720e3b991ebc4c6080f3b6ed325819f35df03b365235eb6f7c34"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Mappings/InvoiceMappings.cs",
+      "bytes": 5560,
+      "sha256": "7945d243a17c7e2cfacecb8c60d236533a0d8e40b8289b97fb04839f50e4497e"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Services/InvoiceService.cs",
+      "bytes": 4696,
+      "sha256": "269d434ea9e268d069b3dbac19423cf6f2f0bcb5ae8956343bbd633bb2b7d622"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Validators/CreateInvoiceRequestValidator.cs",
+      "bytes": 608,
+      "sha256": "dbfa768cec9b4ea7e8820897e2eae994722b2872977100d99181d36fc8c6fe7e"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Validators/InvoiceDetailRequestValidator.cs",
+      "bytes": 1574,
+      "sha256": "d5c199f455b905d262bedc98b2e0bfbf2cd2425d51db07c472eb25144922f366"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Validators/InvoiceFilterRequestValidator.cs",
+      "bytes": 1881,
+      "sha256": "7979177588313d9a9b358d7e6ebeda1b46159954a3e5dc67440ce67ab81c059d"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Validators/InvoiceWriteRequestValidator.cs",
+      "bytes": 3726,
+      "sha256": "b707f0461a65556d0660eadced8610acf7db2516e0ef636e2e93401ff88a4663"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/Validators/UpdateInvoiceRequestValidator.cs",
+      "bytes": 429,
+      "sha256": "93991b206585ace987c8da31a917f33ccfb6b56a7daf5f1a40db5fc66c2acaba"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Application/packages.lock.json",
+      "bytes": 1742,
+      "sha256": "29d6b6542550dfe3a3a6db3d0c0328eeb7e5fe4c5033ccbaae1ba70af374e713"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Domain/Constants/InvoiceFieldLengths.cs",
+      "bytes": 559,
+      "sha256": "e9672fbee4f631d4d17c92d732bdc2ff6db12c86590ed3d118dcb6fba2fb0698"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Domain/Constants/InvoiceStatus.cs",
+      "bytes": 579,
+      "sha256": "49941f9c9a56b3fa4939659ad7f18edfd92596df62d4811ae8f9b831342bb8ce"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Domain/Delosi.InvoicingInvoices.Domain.csproj",
+      "bytes": 249,
+      "sha256": "866597332466842a9f9b63ac6edba0620656cd8682e18cd62476b2a910c52dc4"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Domain/Entities/Invoice.cs",
+      "bytes": 1793,
+      "sha256": "3863c0e5ed2ab3a37c345819f1bfa1b3dfd64f7e1c33f2092d6373863f90ee25"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Domain/Entities/InvoiceDetail.cs",
+      "bytes": 1078,
+      "sha256": "f438b8a5c727263ebee9f3092a933bfcbcbcc2b2ce920fc5ad75dce6ba4e9c0b"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Domain/Entities/InvoiceTax.cs",
+      "bytes": 643,
+      "sha256": "5def742478fea4ce4fc4d761258428e6bb40ffea4884e7683828f762be5aca87"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Domain/Exceptions/BusinessRuleException.cs",
+      "bytes": 349,
+      "sha256": "4062c9204fa21ffd322f76b29412eae1f145399a225426a2aa351fab13a42ea2"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Domain/Exceptions/DataAccessException.cs",
+      "bytes": 392,
+      "sha256": "85e0f7bae0818c66fc7a30a12c29f9c3e96624b8a59e9e1e971eba4a243f16d8"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Domain/Exceptions/DomainException.cs",
+      "bytes": 538,
+      "sha256": "bc147e64d80f056c353c1c3c9d885f736e8ae547b000b63412ec24337842cc10"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Domain/Exceptions/NotFoundException.cs",
+      "bytes": 453,
+      "sha256": "df376870118bcf1b958c2284a961d2374e569d8d81094affa0944005ba2a847c"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Domain/packages.lock.json",
+      "bytes": 349,
+      "sha256": "6731aae44b6ee391172f6dce5d93da90a3e6c5f19184b88b0fbe03e33c8e7ba6"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Infrastructure/Configuration/SecretsManagerConfigurationExtensions.cs",
+      "bytes": 4624,
+      "sha256": "bd3e0f5696a38ce8d84b88fe8409fbd4b0b3177f8c4647ebe6db50eae3b73bf6"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Infrastructure/Delosi.InvoicingInvoices.Infrastructure.csproj",
+      "bytes": 1402,
+      "sha256": "18ef217719921ed88d2207bfd82c6410fa0b7ad0be0a944f54fc90ed536d2cb3"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Infrastructure/Extensions/ServiceCollectionExtensions.cs",
+      "bytes": 1959,
+      "sha256": "547f9aa6869c627b2eb11add35b602b350e929c7c9b8e84e3a2e7d7ca31961ab"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Infrastructure/HealthChecks/PostgresHealthCheck.cs",
+      "bytes": 601,
+      "sha256": "0c2daa57346fa8cdcb7d5f1ebf5ab7d9fc4c2a2d0867529e2699e6a23354e52f"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Infrastructure/Options/DatabaseOptions.cs",
+      "bytes": 256,
+      "sha256": "0e0ff8da8e7e1df890a93f6b508f95f764e66b8df102dc67507635a708e9b85c"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Infrastructure/Persistence/Postgres/AppDbContext.cs",
+      "bytes": 1138,
+      "sha256": "934119debccd3e7c8752c1b1683dcab2bebfd1e17a5530a2addb825088160a42"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Infrastructure/Persistence/Postgres/Configurations/InvoiceConfiguration.cs",
+      "bytes": 6855,
+      "sha256": "e9392516f35c7d23dce6d9ba3f9d125d826e2ae580b1a039e2d5194b3569af30"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Infrastructure/Persistence/Postgres/Configurations/InvoiceDetailConfiguration.cs",
+      "bytes": 3548,
+      "sha256": "22cabd42b73488b96c880337722567a8301c9ae8f426a91b7666f90807bd554f"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Infrastructure/Persistence/Postgres/Configurations/InvoiceTaxConfiguration.cs",
+      "bytes": 2051,
+      "sha256": "60e71ab7e1df088ec0fc18270c0ea5f32e7f682a17a30c27e9b499cb082c2e7c"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Infrastructure/Persistence/Postgres/DatabaseOperation.cs",
+      "bytes": 3735,
+      "sha256": "2f897535c5f72d097eaed6d830ab3108a45f628dfc7db3134eae6a184c9047f7"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Infrastructure/Persistence/Postgres/UnitOfWork.cs",
+      "bytes": 1554,
+      "sha256": "e7e86fb658728bb48514fa3845a127b9a2835173635758a0e2122b46d9822613"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Infrastructure/Persistence/Repositories/InvoiceRepository.cs",
+      "bytes": 4925,
+      "sha256": "abccfd7e873aff443ce6308b1f51939524afb2a4183ad79e5675a7d9823e8e3d"
+    },
+    {
+      "path": "src/Delosi.InvoicingInvoices.Infrastructure/packages.lock.json",
+      "bytes": 11582,
+      "sha256": "330a636e734c9493fbc631d5bf21e5417d37408a101a3afcf26b63f2db20816c"
+    },
+    {
+      "path": "test/Delosi.InvoicingInvoices.Tests/Api/InvoiceApiFactory.cs",
+      "bytes": 1185,
+      "sha256": "ba52438938ac05b8e0037013ac8f03370d8f043f81e6de1127ca5b00e196e27f"
+    },
+    {
+      "path": "test/Delosi.InvoicingInvoices.Tests/Api/InvoiceEndpointsTests.cs",
+      "bytes": 3886,
+      "sha256": "31cb3cdb784c5b5902fe97b5498345874fbbd075c24feaa13c956d44fb052011"
+    },
+    {
+      "path": "test/Delosi.InvoicingInvoices.Tests/Common/InvoiceFactory.cs",
+      "bytes": 1692,
+      "sha256": "73594e6626ee2ec2c5af69584a057c87ac418bf08d929f47ba03ba1aeb060027"
+    },
+    {
+      "path": "test/Delosi.InvoicingInvoices.Tests/Delosi.InvoicingInvoices.Tests.csproj",
+      "bytes": 1734,
+      "sha256": "99e0478ae8d9cf303158f291ab2b522bf2b79b66ca6b1f6e7356691c90b72651"
+    },
+    {
+      "path": "test/Delosi.InvoicingInvoices.Tests/Persistence/DatabaseErrorTests.cs",
+      "bytes": 892,
+      "sha256": "b842e8e1f82c1fac77aef0cfb4aa15f54efd781c6dc9621a86db32d4c833b15a"
+    },
+    {
+      "path": "test/Delosi.InvoicingInvoices.Tests/Persistence/InvoicePostgresTests.cs",
+      "bytes": 6991,
+      "sha256": "304764ff452e2d5d2527246fd7f9c2d860bd7c25da560a6df7745cbc411e9afc"
+    },
+    {
+      "path": "test/Delosi.InvoicingInvoices.Tests/Persistence/ModelTests.cs",
+      "bytes": 2463,
+      "sha256": "962cee18555a65c958aad7fe51394244ca226d34d6e3b340eb28f57ee6b950af"
+    },
+    {
+      "path": "test/Delosi.InvoicingInvoices.Tests/Validators/InvoiceRequestValidatorTests.cs",
+      "bytes": 2733,
+      "sha256": "77492e0d338363150aadb877105da982b855968eebff28c3aa4bdbe6c30e4573"
+    },
+    {
+      "path": "test/Delosi.InvoicingInvoices.Tests/packages.lock.json",
+      "bytes": 40227,
+      "sha256": "d327c268a54ee3c407f4d224f47420335544f21225805cb8ada1e2e8950fa6d5"
+    }
+  ]
+}
