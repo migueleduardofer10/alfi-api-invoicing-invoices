@@ -14,7 +14,7 @@ variables:
   OUTPUT_DIR: "src/Delosi.InvoicingInvoices.Api/bin/Release/net8.0/"
 
   # CAMBIAR POR LAMBDA: nombre de la función en AWS. Debe ser idéntico al que crea
-  # Terraform en alfie-infrastructure (lambdas.tf), con esta estructura:
+  # Terraform en ventasCorp-infrastructure (lambdas.tf), con esta estructura:
   #
   #   Delosi-Alfie-{Function-Name}-Lambda-{Env}
   #
