@@ -16,7 +16,7 @@ variables:
   # CAMBIAR POR LAMBDA: nombre de la función en AWS. Debe ser idéntico al que crea
   # Terraform en ventasCorp-infrastructure (lambdas.tf), con esta estructura:
   #
-  #   Delosi-Alfie-{Function-Name}-Lambda-{Env}
+  #   Delosi-VentasCorp-{Function-Name}-Lambda-{Env}
   #
   #   {Function-Name} = el function_name del bloque module en lambdas.tf, con la
   #                     primera letra de cada palabra en mayúscula.
@@ -26,19 +26,19 @@ variables:
   #   {Env}           = Dev, Stg o Prd
   #
   # Si no coincide, el pipeline compila pero falla al desplegar: no encuentra la función.
-  DEV_AWS_FUNCTION_NAME: "Delosi-Alfie-Invoicing-Invoices-Lambda-Dev"
+  DEV_AWS_FUNCTION_NAME: "Delosi-VentasCorp-Invoicing-Invoices-Lambda-Dev"
   DEV_AWS_ACCESS_KEY_ID: $DEV_AWS_ACCESS_KEY_ID
   DEV_AWS_SECRET_ACCESS_KEY: $DEV_AWS_SECRET_ACCESS_KEY
   DEV_AWS_REGION: $AWS_REGION
 
   # CAMBIAR POR LAMBDA: misma estructura, terminado en -Stg
-  STG_AWS_FUNCTION_NAME: "Delosi-Alfie-Invoicing-Invoices-Lambda-Stg"
+  STG_AWS_FUNCTION_NAME: "Delosi-VentasCorp-Invoicing-Invoices-Lambda-Stg"
   STG_AWS_ACCESS_KEY_ID: $STG_AWS_ACCESS_KEY_ID
   STG_AWS_SECRET_ACCESS_KEY: $STG_AWS_SECRET_ACCESS_KEY
   STG_AWS_REGION: $AWS_REGION
 
   # CAMBIAR POR LAMBDA: misma estructura, terminado en -Prd
-  PRD_FUNCTION_NAME: "Delosi-Alfie-Invoicing-Invoices-Lambda-Prd"
+  PRD_FUNCTION_NAME: "Delosi-VentasCorp-Invoicing-Invoices-Lambda-Prd"
   PRD_AWS_ACCESS_KEY_ID: $PRD_AWS_ACCESS_KEY_ID
   PRD_AWS_SECRET_ACCESS_KEY: $PRD_AWS_SECRET_ACCESS_KEY
   PRD_AWS_REGION: $AWS_REGION
